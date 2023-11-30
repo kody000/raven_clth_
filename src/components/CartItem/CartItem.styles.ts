@@ -1,0 +1,90 @@
+import { makeStyles, Theme } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme: Theme) => ({
+  cartItem: {
+    padding: "25px",
+    display: "flex",
+    gap: "50px",
+    background: theme.palette.primary.light,
+    backgroundColor: "hsla(150, 100%, 97%, 0.7)",
+    border: "5px solid #4B3435",
+    alignItems: "end",
+    position: "relative",
+  },
+  imageContainer: {
+    width: "200px",
+    height: "260px",
+    background: theme.palette.primary.light,
+    border: "5px solid #4B3435",
+  },
+  itemInfo: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "start",
+    height: "90%",
+  },
+  itemName: {
+    color: theme.palette.secondary.main,
+    textShadow: "4px 2px 0px black",
+    fontSize: "40px",
+    fontWeight: 700,
+    lineHeight: "normal",
+  },
+  itemVariant: {
+    display: "flex",
+    gap: "25px",
+    color: theme.palette.background.default,
+    fontWeight: 700,
+    fontSize: "24px",
+    lineHeight: "normal",
+    marginBottom: "22px",
+  },
+  itemQuantity: {
+    display: "flex",
+    gap: "25px",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    background: theme.palette.background.default,
+    border: "4px solid #4B3435",
+    padding: "0 10px",
+    color: theme.palette.primary.main,
+    fontSize: "20px",
+    fontWeight: 600,
+    cursor: "pointer",
+    position: "relative",
+    "& span": {
+      "&:hover": {
+        color: theme.palette.secondary.main,
+      },
+    },
+  },
+  itemPrice: {
+    padding: "8px 15px",
+    background: theme.palette.background.default,
+    color: theme.palette.primary.main,
+    fontSize: "36px",
+    fontWeight: 700,
+    lineHeight: "normal",
+    marginLeft: "35px",
+  },
+  removeButton: {
+    position: "absolute",
+    color: theme.palette.secondary.main,
+    textTransform: "uppercase",
+    fontSize: "16px",
+    fontWeight: 700,
+    lineHeight: "normal",
+    padding: "5px 10px",
+    background: theme.palette.background.default,
+    cursor: "pointer",
+    top: "22px",
+    right: "30px",
+    "&:hover": {
+      backgroundColor: theme.palette.secondary.main,
+      boxShadow: `inset 0 0 0 4px ${theme.palette.background.default}`,
+      color: theme.palette.background.default,
+    },
+  },
+}));
+
+export default useStyles;

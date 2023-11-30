@@ -1,0 +1,63 @@
+#root {
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter"), url("./fonts/inter.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("D:\projekty_vscode\projektInżynierski\raven_clth_\src\img\defaultBackground.png");
+  background-size: cover; /* This will make the image cover the entire viewport */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
+  min-height: 100vh; /* Ensure at least 100% of the viewport height */
+  font-family: "Inter", sans-serif !important;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.headerSpacer {
+  height: 75px;
+}
