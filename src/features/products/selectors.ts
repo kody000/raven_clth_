@@ -76,3 +76,60 @@ export const selectCart = (state: RootState): CartItem[] =>
 export const selectTotalItemsInCart = createSelector([selectCart], (cart) =>
   cart.reduce((total, item) => total + item.quantity, 0)
 );
+
+// Selector to get the products slice from the state
+const selectProducts = (state: RootState) => state.products;
+
+// Selector to get the active discount from the state
+export const selectActiveDiscount = (state: RootState) =>
+  selectProducts(state).activeDiscount;
+
+// Selector to get the cart items from the state
+export const selectCartItems = (state: RootState) => selectProducts(state).cart;
+
+export const selectTotalPriceWithoutDiscount = createSelector(
+  [selectCartItems],
+  (cartItems) => {
+    const totalPriceWithoutDiscount = cartItems.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
+
+    const formattedTotalPrice = totalPriceWithoutDiscount.toFixed(2);
+
+    return formattedTotalPrice;
+  }
+);
+
+export const getActiveDiscount = (state: RootState) =>
+  state.products.activeDiscount;
+
+export const getActiveDiscountValue = (state: RootState) => {
+  const activeDiscount = state.products.activeDiscount;
+  const availableDiscounts = state.products.availableDiscounts;
+
+  if (activeDiscount && availableDiscounts[activeDiscount] !== undefined) {
+    return availableDiscounts[activeDiscount];
+  }
+
+  // Default to 0 if there is no active discount or if the active discount is invalid
+  return 0;
+};
+
+const getAvailableDiscounts = (state: RootState) =>
+  state.products.availableDiscounts;
+
+export const getActiveDiscountPercentage = createSelector(
+  [getActiveDiscount, getAvailableDiscounts],
+  (activeDiscount, availableDiscounts) => {
+    if (activeDiscount && availableDiscounts[activeDiscount] !== undefined) {
+      // If there is an active discount and it exists in availableDiscounts
+      const discountValue = availableDiscounts[activeDiscount];
+      // Convert discount value to percentage
+      const percentage = discountValue * 100;
+      return percentage;
+    }
+    // Default to 0 if there is no active discount or if the active discount is invalid
+    return 0;
+  }
+);

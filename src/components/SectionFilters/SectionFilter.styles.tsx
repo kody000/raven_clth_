@@ -5,9 +5,11 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     gap: "30px",
     alignItems: "center",
-    possition: "relative",
   },
   filterButtonContainer: {
+    position: "relative",
+  },
+  filterButton: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -24,6 +26,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       color: theme.palette.secondary.main,
     },
   },
+  activeFilter: {
+    borderColor: theme.palette.secondary.main,
+    color: `${theme.palette.secondary.main} !important`,
+  },
   filtersDropdownContainer: {
     display: "flex",
     flexDirection: "column",
@@ -34,8 +40,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: theme.palette.background.default,
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
     position: "absolute",
-    top: 375,
-    right: 705,
+    top: "45px",
+    right: "-40px",
   },
   filtersDropdownOptions: {
     color: theme.palette.primary.main,

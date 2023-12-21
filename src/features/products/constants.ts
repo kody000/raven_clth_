@@ -1,5 +1,12 @@
 import { Product } from "./types";
 
+export enum ProductSizes {
+  S = "s",
+  M = "m",
+  L = "l",
+  XL = "xl",
+}
+
 export enum ProductType {
   T_SHIRT = "t-shirt",
   HOODIE = "hoodie",

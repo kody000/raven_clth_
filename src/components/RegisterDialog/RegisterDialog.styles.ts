@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "50px",
       height: "50px",
     },
+    "&:focus": {
+      outline: "none",
+    },
   },
   logoContainer: {
     padding: "0 25px",

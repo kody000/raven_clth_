@@ -1,7 +1,4 @@
-import {
-  InstagramFilledLogo,
-  TikTokFilledLogo,
-} from "../../components/Icons/Icons";
+import { InstagramFilledLogo, TikTokFilledLogo } from "../../Icons/Icons";
 import useStyles from "./Faq.style";
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 

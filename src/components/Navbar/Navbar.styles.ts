@@ -60,12 +60,20 @@ const useStyles = makeStyles((theme: Theme) => ({
     display: "flex",
     gap: "25px",
     marginRight: "25px",
+    "& .MuiSvgIcon-root": {
+      "&:hover": {
+        fill: theme.palette.secondary.main,
+      },
+    },
   },
   navAction: {
     "& svg": {
       fill: theme.palette.primary.main,
       width: "30px",
       height: "30px",
+    },
+    "&:focus": {
+      outline: "none",
     },
   },
   drawerContainer: {

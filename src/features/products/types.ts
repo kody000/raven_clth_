@@ -1,4 +1,4 @@
-import { ProductType, FilterOrder } from "./constants";
+import { ProductType, FilterOrder, ProductSizes } from "./constants";
 
 export interface ProductFilters {
   selectedType?: ProductType;
@@ -27,12 +27,6 @@ export interface CartItem {
   type: ProductType;
   color: string;
   price: number;
-  sizes: {
-    s: boolean;
-    m: boolean;
-    l: boolean;
-    xl: boolean;
-  };
-  size: "s" | "m" | "l" | "xl";
+  size: ProductSizes;
   quantity: number;
 }

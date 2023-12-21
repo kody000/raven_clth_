@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: "25px",
     display: "flex",
     gap: "50px",
+    maxWidth: "800px",
     background: theme.palette.primary.light,
     backgroundColor: "hsla(150, 100%, 97%, 0.7)",
     border: "5px solid #4B3435",
@@ -20,8 +21,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   itemInfo: {
     display: "flex",
     flexDirection: "column",
+    width: "37.5%",
     alignItems: "start",
-    height: "90%",
+    height: "95%",
+    textAlign: "left",
   },
   itemName: {
     color: theme.palette.secondary.main,

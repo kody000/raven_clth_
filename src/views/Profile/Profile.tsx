@@ -3,10 +3,12 @@ import useStyles from "./Profile.style";
 import { useSelector } from "react-redux";
 import { selectUserOrders } from "../../features/login/selectors";
 import OrderHistoryRow from "../../components/OrderHistoryRow/OrderHistoryRow";
+import { selectLoggedInUser } from "../../features/login/selectors";
 
 const Profile = () => {
   const classes = useStyles();
   const orders = useSelector(selectUserOrders);
+  const loggedInUser = useSelector(selectLoggedInUser);
 
   return (
     <>
@@ -36,11 +38,18 @@ const Profile = () => {
               <div className={classes.addressDetailsTitle}>Details</div>
               <div className={classes.addressContent}>
                 <div className={classes.address}>
-                  <div className={classes.name}>Konrad Wnuk</div>
-                  <div>Grabiszyńska 315/19</div>
-                  <div>53-236 Wrocław</div>
-                  <div>Lower Silesia</div>
-                  <div className={classes.countryRow}>Poland</div>
+                  <div className={classes.name}>
+                    {loggedInUser?.firstName} {loggedInUser?.lastName}
+                  </div>
+                  <div>{loggedInUser?.addresses[0].street}</div>
+                  <div>
+                    {loggedInUser?.addresses[0].zipCode}{" "}
+                    {loggedInUser?.addresses[0].city}
+                  </div>
+                  <div>{loggedInUser?.addresses[0].state}</div>
+                  <div className={classes.countryRow}>
+                    {loggedInUser?.addresses[0].country}
+                  </div>
                 </div>
               </div>
             </div>

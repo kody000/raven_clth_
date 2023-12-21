@@ -1,5 +1,5 @@
-import { Route, Routes } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Route, Routes, useLocation } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import Home from "./views/Home/Home";
 import Faq from "./views/FAQ/Faq";
@@ -18,10 +18,18 @@ import {
 } from "./features/login/selectors";
 import RegisterDialog from "./components/RegisterDialog/RegisterDialog";
 import Product from "./views/Product/Product";
+import { useEffect } from "react";
+import { clearFilters } from "./features/products/productsSlice";
 
 function App() {
   const isLoginDialogOpen = useSelector(selectIsLoginDialogOpen);
   const isRegisterDialogOpen = useSelector(selectIsRegisterDialogOpen);
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(clearFilters());
+  }, [location.pathname, dispatch]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -35,7 +43,7 @@ function App() {
         <Route path="/stock" Component={Stock} />
         <Route path="/profile" Component={Profile} />
         <Route path="/product/:productId" Component={Product} />
-        <Route path="/test2" Component={Profile} />
+        <Route path="/profile" Component={Profile} />
         <Route path="/cart" Component={Cart} />
       </Routes>
     </ThemeProvider>

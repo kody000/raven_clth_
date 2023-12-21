@@ -1,11 +1,8 @@
-// loginSlice.ts (continued)
 import { createSelector } from "reselect";
 import { RootState } from "../../app/store";
 
-// Select the login slice from the root state
 const selectLogin = (state: RootState) => state.login;
 
-// Basic selectors
 export const selectIsLoginDialogOpen = createSelector(
   [selectLogin],
   (login) => login.isLoginDialogOpen
@@ -22,9 +19,16 @@ export const selectAccounts = createSelector(
 );
 
 export const selectLoggedInUser = createSelector([selectLogin], (login) => {
-  // Add your logic to determine the logged-in user based on the token
-  const loggedInUser = login.accounts.find((account) => account.token !== null);
-  return loggedInUser || null; // Return null if no user is logged in
+  const loggedInToken = localStorage.getItem("loggedInToken");
+
+  if (loggedInToken) {
+    const loggedInUser = login.accounts.find(
+      (account) => account.token === loggedInToken
+    );
+    return loggedInUser || null;
+  }
+
+  return null;
 });
 
 export const selectUserOrders = createSelector(

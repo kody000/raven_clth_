@@ -15,10 +15,11 @@ body {
   margin: 0;
   padding: 0;
   background-image: url("D:\projekty_vscode\projektInżynierski\raven_clth_\src\img\defaultBackground.png");
-  background-size: cover; /* This will make the image cover the entire viewport */
-  background-position: center; /* Center the image */
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh; /* Ensure at least 100% of the viewport height */
+  background-attachment: fixed;
+  min-height: 100vh;
   font-family: "Inter", sans-serif !important;
 }
 

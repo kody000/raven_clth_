@@ -42,7 +42,6 @@ const loginSlice = createSlice({
       action: PayloadAction<{ email: string; password: string }>
     ) => {
       const { email, password } = action.payload;
-      console.log(email, password);
       const loggedInUser = state.accounts.find(
         (account) => account.email === email && account.password === password
       );
@@ -50,8 +49,10 @@ const loginSlice = createSlice({
       if (loggedInUser) {
         state.loggedInToken = loggedInUser.token || null;
         state.isLoginDialogOpen = false;
-      } else {
-        // Handle unsuccessful login (e.g., show an error message)
+
+        if (state.loggedInToken) {
+          localStorage.setItem("loggedInToken", state.loggedInToken);
+        }
       }
     },
     register: (state, action: PayloadAction<Account>) => {
@@ -62,6 +63,12 @@ const loginSlice = createSlice({
       state.accounts.push(newAccount);
       state.isRegisterDialogOpen = false;
       state.loggedInToken = newAccount.token;
+    },
+    logoff: (state) => {
+      console.log("hi");
+      state.loggedInToken = null;
+
+      localStorage.removeItem("loggedInToken");
     },
   },
 });
@@ -74,6 +81,7 @@ export const {
   addAccount,
   login,
   register,
+  logoff,
 } = loginSlice.actions;
 
 export default loginSlice.reducer;
